@@ -1,6 +1,29 @@
-plugins {
-    id("com.android.application") version "8.7.0" apply false
-    id("org.jetbrains.kotlin.android") version "2.1.0" apply false
-    // أضفنا هذا السطر الخاص بالفايربيس هنا:
-    id("com.google.gms.google-services") version "4.5.0" apply false
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+val newBuildDir: Directory = rootProject.layout.buildDirectory.dir("../../build").get()
+rootProject.layout.buildDirectory.value(newBuildDir)
+
+subprojects {
+    val subprojectBuildDir: Directory = newBuildDir.dir(project.name)
+    project.layout.buildDirectory.value(subprojectBuildDir)
+}
+subprojects {
+    afterEvaluate { project ->
+        if (project.hasProperty("android")) {
+            project.extensions.configure<com.android.build.gradle.BaseExtension> {
+                if (namespace == null) {
+                    namespace = project.group.toString()
+                }
+            }
+        }
+    }
+}
+
+tasks.register<Delete>("clean") {
+    delete(rootProject.layout.buildDirectory)
 }
