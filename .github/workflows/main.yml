@@ -21,13 +21,14 @@ jobs:
     - name: Set up Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.22.2'
+        flutter-version: '3.16.5'
         channel: 'stable'
 
-    - name: Clean and Recreate Android Folder
+    - name: Ensure Android platform exists
       run: |
-        rm -rf android
-        flutter create . --platforms=android --project-name=souq_basrah
+        if [ ! -d "android" ]; then
+          flutter create . --platforms=android --project-name=souq_basrah
+        fi
 
     - name: Install dependencies
       run: flutter pub get
