@@ -24,9 +24,10 @@ jobs:
         flutter-version: '3.22.2'
         channel: 'stable'
 
-    - name: Clean and Get Dependencies
+    - name: Recreate Android and Get Dependencies
       run: |
-        flutter clean
+        rm -rf android
+        flutter create . --platforms=android --project-name=souq_basrah
         flutter pub get
 
     - name: Build APK
@@ -37,3 +38,4 @@ jobs:
       with:
         name: release-apk
         path: build/app/outputs/flutter-apk/app-release.apk
+      
