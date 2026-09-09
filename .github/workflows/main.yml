@@ -24,11 +24,10 @@ jobs:
         flutter-version: '3.19.6'
         channel: 'stable'
 
-    - name: Fix Android Directory if Missing
+    - name: Force Clean and Recreate Android Platform
       run: |
-        if [ ! -f "android/app/src/main/AndroidManifest.xml" ]; then
-          flutter create . --platforms=android --project-name=souq_basrah
-        fi
+        rm -rf android
+        flutter create . --platforms=android --project-name=souq_basrah
 
     - name: Install dependencies
       run: flutter pub get
