@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1085523846772",
+    "project_id": "souq-basrah",
+    "storage_bucket": "souq-basrah.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1085523846772:android:a08ac319abc7be2344d321",
+        "android_client_info": {
+          "package_name": "com.example.souq_basrah"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6RKvZ6uyfvpl-91GAnG91xJCclS0qz3A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
